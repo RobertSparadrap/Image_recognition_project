@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Fleury Michon</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="search">
+            <div class="icon"></div>
+            <div class="input">
+                <input type="file" placeholder="Search" id="mysearch">
+            </div>
+            <span class="clear" onclick="document.getElementById('mysearch').value = ''"></span>
+        </div>
+    <script>
+        const icon = document.querySelector('.icon');
+        const search = document.querySelector('.search');
+        icon.onclick = function(){
+            search.classList.toggle('active')
+        }
+    </script>
+    <input type="button" id='script' name="scriptbutton" value=" Search " onclick="exec('./runIA datasetTest/ham/images-2021-11-17T162955.744.jpeg');">
+    </body>
+</html>

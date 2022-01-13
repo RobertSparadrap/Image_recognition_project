@@ -1,0 +1,79 @@
+#!/usr/bin/python3
+
+import sys
+import json
+
+def data():
+    dta = open("result.txt")
+    d = dta.readline()
+    return d
+
+def json_file(d):
+    file = "fleury_michon/fleury_michon.json"
+    all = []
+    with open(file) as read_file:
+        data = json.load(read_file)
+        for p in data['fleury']:
+            produit = []
+            if p['type'] == d:
+#                print('Name: ' + p['name'])
+                img = "/"+p['type']+"/"+p['image']
+#                print('Image: ' + img)
+#                print('Type: ' + p['type'])
+                produit.append(p['name'])
+                produit.append(img)
+                produit.append(p['web'])
+                produit.append(p['type'])
+                all.append(produit)
+        read_file.close()
+    return all
+
+def create_new_json(data):
+    file = "result.json"
+    try:
+        a_file = open(file, "r+")
+    except:
+        print("No file")
+    json_object = json.load(a_file)
+    i = 0
+    for p in json_object['fleury']:
+        print(data[i][0])
+        p['name'] = data[i][0]
+        p['image'] = data[i][1]
+        p['web'] = data[i][2]
+        p['type'] = data[i][3]
+        a_file.write(json.dumps(p))
+        i+=1
+    a_file.close()
+
+def updateJsonFile(data):
+    jsonFile = open("result.json", "r") # Open the JSON file for reading
+    dataJson = json.load(jsonFile) # Read the JSON into the buffer
+    jsonFile.close() # Close the JSON file
+
+    ## Working with buffered content
+    i = 0
+    for p in dataJson['fleury']:
+#        tmp = p["location"] 
+        print(data[i][0])
+        p['name'] = data[i][0]
+        p['image'] = data[i][1]
+        p['web'] = data[i][2]
+        p['type'] = data[i][3]
+        i += 1
+
+    ## Save our changes to JSON file
+        jsonFile = open("result.json", "w+")
+        jsonFile.write(json.dumps(dataJson))
+        jsonFile.close()
+
+def main():
+    d = data()
+    d = d.replace('\n', '')
+    all = json_file(d)
+#    create_new_json(all)
+    updateJsonFile(all)
+    exit(0)
+
+if __name__ == "__main__":
+    main()

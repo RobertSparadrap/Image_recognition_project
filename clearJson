@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+
+import sys
+import json
+
+
+def updateJsonFile():
+    jsonFile = open("result.json", "r") # Open the JSON file for reading
+    dataJson = json.load(jsonFile) # Read the JSON into the buffer
+    jsonFile.close() # Close the JSON file
+
+    ## Working with buffered content
+    i = 0
+    for p in dataJson['fleury']:
+        p['name'] = ""
+        p['image'] = ""
+        p['web'] = ""
+        p['type'] = ""
+        i += 1
+
+    ## Save our changes to JSON file
+        jsonFile = open("result.json", "w+")
+        jsonFile.write(json.dumps(dataJson))
+        jsonFile.close()
+
+def main():
+    updateJsonFile()
+    exit(0)
+
+if __name__ == "__main__":
+    main()

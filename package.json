@@ -1,0 +1,23 @@
+{
+  "name": "edhec",
+  "version": "1.0.0",
+  "description": "Code source du tutoriel de https://deeplylearning.fr/cours-pratiques-deep-learning/reconnaissance-dimages/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Epitech2021-2022/B-PRO-995-NCE-0-1-edhecepitech-clement1.berard.git"
+  },
+  "author": "Robert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Epitech2021-2022/B-PRO-995-NCE-0-1-edhecepitech-clement1.berard/issues"
+  },
+  "homepage": "https://github.com/Epitech2021-2022/B-PRO-995-NCE-0-1-edhecepitech-clement1.berard#readme",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "express": "^4.17.1"
+  }
+}
