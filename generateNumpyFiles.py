@@ -19,15 +19,15 @@ def launchConversion(pathData, pathNumpy, resizeImg, imgSize):
     """
 
     #Pour chaque classe
-    for flowerClasse in os.listdir(pathData):
-        pathFlower = pathData + '/' + flowerClasse
+    for ingredientClasse in os.listdir(pathData):
+        pathIngredient = pathData + '/' + ingredientClasse
         imgs = []
 
         #Pour chaque image d'une classe, on la charge, resize et transforme en tableau
-        for imgFlower in tqdm(os.listdir(pathFlower), "Conversion de la classe : '{}'".format(flowerClasse)):
-            imgFlowerPath = pathFlower + '/' + imgFlower
-#           print(imgFlowerPath)
-            img = Image.open(imgFlowerPath).convert('RGB')
+        for imgIngredient in tqdm(os.listdir(pathIngredient), "Conversion de la classe : '{}'".format(ingredientClasse)):
+            imgIngredientPath = pathIngredient + '/' + imgIngredient
+#           print(imgIngredientPath)
+            img = Image.open(imgIngredientPath).convert('RGB')
             img.load()
             if resizeImg == True:
                 img = img.resize(size=imgSize)
@@ -38,23 +38,23 @@ def launchConversion(pathData, pathNumpy, resizeImg, imgSize):
         #Converti les gradients de pixels (allant de 0 à 255) vers des gradients compris entre 0 et 1
 #        print(imgs)
 #        try:
-        print("GOOD", imgFlowerPath)
+        print("GOOD", imgIngredientPath)
         imgs = np.asarray(imgs) / 255.
-#            np.save(pathNumpy + '/' + flowerClasse + '.npy', imgs)
+#            np.save(pathNumpy + '/' + ingredientClasse + '.npy', imgs)
 #        except:
-#            print("PROBLEME", imgFlowerPath)
+#            print("PROBLEME", imgIngredientPath)
 #            continue
 
 #        try:
-#            print("GOOD FILE", flowerClasse)
+#            print("GOOD FILE", ingredientClasse)
 #            imgs = np.asarray(imgs) / 255.
-        np.save(pathNumpy + '/ ' + flowerClasse + '.npy', imgs)
+        np.save(pathNumpy + '/ ' + ingredientClasse + '.npy', imgs)
 #        except:
-#            print("COUCOU", print(imgFlowerPath))
+#            print("COUCOU", print(imgIngredientPath))
 #            continue
 
         #Enregistre une classe entiere en un fichier numpy
-#        np.save(pathNumpy + '/ ' + flowerClasse + '.npy', imgs)
+#        np.save(pathNumpy + '/ ' + ingredientClasse + '.npy', imgs)
 
 
 def main():
